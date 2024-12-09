@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onBeforeMount, ref } from 'vue'
+import { onBeforeMount, ref, computed } from 'vue'
 import TheBreadcrumbs from '@/components/TheBreadcrumbs.vue'
 import ContainerWrapper from '@/components/layouts/ContainerWrapper.vue'
 import ProductsList from '@/components/ProductsList.vue'
@@ -10,6 +10,7 @@ import { loadListProducts } from '@/services/productService'
 
 const wishStore = useWishlistStore()
 const data = ref<ProductsData>({ products: [] })
+const breadcrumbs = [{ label: 'Wishlist', path: '/wishlist' }]
 
 onBeforeMount(async () => {
   data.value = await loadListProducts()
@@ -22,13 +23,17 @@ function handleWishlist(id: string) {
 function checkIsWished(id: string) {
   return wishStore.wishlist.includes(id)
 }
+
+const products = computed(() => {
+  return data.value.products.filter((item) => checkIsWished(item.code))
+})
 </script>
 
 <template>
-  <main class="homeView">
+  <main class="wishlistView">
     <ContainerWrapper>
-      <TheBreadcrumbs />
-      <ProductsList :showEmpty="data.products.length === 0">
+      <TheBreadcrumbs :crumbs="breadcrumbs" />
+      <ProductsList :showEmpty="products.length === 0">
         <ProductCard
           :title="item.name"
           :description="item.details.description"
@@ -37,9 +42,10 @@ function checkIsWished(id: string) {
           :fullPrice="item.fullPriceInCents"
           :salePrice="item.salePriceInCents"
           :wished="checkIsWished(item.code)"
-          v-for="item in data.products"
+          v-for="item in products"
           :key="item.code"
           @wishlist="handleWishlist(item.code)"
+          dropMode
         />
       </ProductsList>
     </ContainerWrapper>

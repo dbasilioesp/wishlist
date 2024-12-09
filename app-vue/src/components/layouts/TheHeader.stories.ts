@@ -5,7 +5,7 @@ import { vueRouter } from 'storybook-vue3-router'
 import TheHeader from './TheHeader.vue'
 
 const meta = {
-  title: 'Example/Header',
+  title: 'Layout/Header',
   component: TheHeader,
   render: (args: any) => ({
     components: { TheHeader },

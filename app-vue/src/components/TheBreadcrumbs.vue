@@ -7,19 +7,19 @@ type Link = {
 }
 
 const props = defineProps<{
-  links?: Link[]
+  crumbs?: Link[]
 }>()
 
-let dataLinks: Link[] = [{ path: '/', label: 'Home' }]
+let dataCrumbs: Link[] = [{ path: '/', label: 'Home' }]
 
-if (props.links) {
-  dataLinks = [...dataLinks, ...props.links]
+if (props.crumbs) {
+  dataCrumbs = [...dataCrumbs, ...props.crumbs]
 }
 
-const links = ref<Link[]>(dataLinks)
+const crumbs = ref<Link[]>(dataCrumbs)
 
 function getClassStyle(index: number): string {
-  if (index === links.value.length - 1) {
+  if (index === crumbs.value.length - 1) {
     return 'is-current'
   }
   return ''
@@ -28,11 +28,11 @@ function getClassStyle(index: number): string {
 
 <template>
   <div class="breadcrumbs">
-    <template v-for="(link, idx) in links" :key="link.label">
-      <RouterLink :to="link.path" :class="getClassStyle(idx)">
-        {{ link.label }}
+    <template v-for="(item, idx) in crumbs" :key="item.label">
+      <RouterLink :to="item.path" :class="getClassStyle(idx)">
+        {{ item.label }}
       </RouterLink>
-      <span v-if="idx < links.length - 1">/</span>
+      <span v-if="idx < crumbs.length - 1">/</span>
     </template>
   </div>
 </template>
@@ -56,7 +56,7 @@ function getClassStyle(index: number): string {
   font-weight: 600;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1023px) {
   .breadcrumbs {
     border: 0;
     padding-block: 10px;

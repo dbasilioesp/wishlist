@@ -5,7 +5,7 @@ import { vueRouter } from 'storybook-vue3-router'
 import TheBreadcrumbs from './TheBreadcrumbs.vue'
 
 const meta = {
-  title: 'Example/Breadcrumbs',
+  title: 'App/Breadcrumbs',
   component: TheBreadcrumbs,
   render: (args: any) => ({
     components: { TheBreadcrumbs },
@@ -19,7 +19,7 @@ const meta = {
   },
   decorators: [vueRouter()],
   args: {
-    links: [
+    crumbs: [
       {
         path: '/wishlist',
         label: 'Wishlist',

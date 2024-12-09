@@ -2,11 +2,12 @@
 import LogoIcon from '@/components/icons/LogoIcon.vue'
 import HeartIcon from '@/components/icons/HeartIcon.vue'
 import AccountIcon from '@/components/icons/AccountIcon.vue'
+import ContainerWrapper from './ContainerWrapper.vue'
 </script>
 
 <template>
   <header class="header">
-    <div class="header__wrapper">
+    <ContainerWrapper class="header__wrapper">
       <RouterLink to="/" class="header__logoLink">
         <LogoIcon />
       </RouterLink>
@@ -17,14 +18,13 @@ import AccountIcon from '@/components/icons/AccountIcon.vue'
       <nav class="header__accountMenu">
         <AccountIcon />
       </nav>
-    </div>
+    </ContainerWrapper>
   </header>
 </template>
 
 <style>
 .header {
   height: var(--headerHeight);
-  padding: 0 20px;
   background-color: var(--primaryColor);
 }
 
@@ -69,11 +69,7 @@ import AccountIcon from '@/components/icons/AccountIcon.vue'
   justify-self: end;
 }
 
-@media (max-width: 1200px) {
-  .header {
-    padding-inline: 4vw;
-  }
-
+@media (max-width: 1023px) {
   .header__wrapper {
     grid-template-columns: auto 1fr auto;
     grid-template-areas: 'c a b';
