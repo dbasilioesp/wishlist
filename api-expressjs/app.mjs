@@ -3,6 +3,7 @@ import express from "express";
 import path from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
+import cors from "cors";
 
 import indexRouter from "./routes/index.mjs";
 import apiRouter from "./routes/api/index.mjs";
@@ -13,6 +14,7 @@ const app = express();
 app.set("views", path.join(import.meta.dirname || "", "views"));
 app.set("view engine", "pug");
 
+app.use(cors("*"));
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
