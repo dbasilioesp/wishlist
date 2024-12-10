@@ -2,7 +2,7 @@ import { fn } from '@storybook/test'
 import type { Meta, StoryObj } from '@storybook/vue3'
 import { vueRouter } from 'storybook-vue3-router'
 
-import ProductCard from './ProductCard.vue'
+import ProductCard from '@/components/ProductCard.vue'
 import ProductImage from '@/assets/images/product.jpg'
 
 const meta = {

@@ -2,7 +2,7 @@ import { fn } from '@storybook/test'
 import type { Meta, StoryObj } from '@storybook/vue3'
 import { vueRouter } from 'storybook-vue3-router'
 
-import TheBreadcrumbs from './TheBreadcrumbs.vue'
+import TheBreadcrumbs from '@/components/TheBreadcrumbs.vue'
 
 const meta = {
   title: 'App/Breadcrumbs',

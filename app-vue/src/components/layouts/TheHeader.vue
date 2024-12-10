@@ -23,7 +23,7 @@ import AccountMenu from '../AccountMenu.vue'
 <style>
 .header {
   height: var(--headerHeight);
-  background-color: var(--primaryColor);
+  background-color: var(--purple);
 }
 
 .header__wrapper {
@@ -41,21 +41,28 @@ import AccountMenu from '../AccountMenu.vue'
 
 .header__logoLink {
   grid-area: a;
-}
-
-.header__wishlistLink {
-  display: inline-flex;
-  flex-wrap: nowrap;
-  align-items: center;
-  gap: 6px;
+  justify-self: start;
 }
 
 .header__wishlistLink {
   grid-area: b;
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 6px;
+
+  border: 2px solid transparent;
+  padding: 10px;
+  border-radius: 20px;
   color: white;
   text-decoration: none;
   font-weight: 500;
   letter-spacing: 1px;
+  transition: all 200ms;
+}
+
+.header__wishlistLink:hover {
+  border-color: currentColor;
 }
 
 .header__wishlistLink svg {

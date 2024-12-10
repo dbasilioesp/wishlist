@@ -56,6 +56,11 @@ function getClassStyle(index: number): string {
   font-weight: 600;
 }
 
+.breadcrumbs a:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 @media (max-width: 1023px) {
   .breadcrumbs {
     border: 0;

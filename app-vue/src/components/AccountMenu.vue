@@ -26,63 +26,77 @@ function toggleMenu() {
 </script>
 
 <template>
-  <nav class="header__accountMenu" :class="{ 'is-opened': menuIsOpen }" ref="nav">
+  <nav class="accountMenu" :class="{ 'is-opened': menuIsOpen }" ref="nav">
     <button
       type="button"
-      class="header__accountButton"
+      class="accountMenu__button"
       aria-label="Menu Conta"
       @click.stop="toggleMenu"
     >
       <AccountIcon />
     </button>
-    <div class="header__accountPopover">
-      <a href="/signin">Entrar</a>
-      <a href="/my-account">Minha Conta</a>
-      <a href="/addresses">Endereços</a>
-      <a href="/my-netshoes">Minha Netshoes</a>
+    <div class="accountMenu__popover">
+      <a href="/">Entrar</a>
+      <a href="/">Minha Conta</a>
+      <a href="/">Endereços</a>
+      <a href="/">Minha Netshoes</a>
     </div>
   </nav>
 </template>
 
 <style>
-.header__accountMenu {
+.accountMenu {
   position: relative;
   z-index: 1;
 }
 
-.header__accountButton {
+.accountMenu__button {
   background-color: transparent;
-  padding: 0;
+  padding: 2px;
   border: 0;
   cursor: pointer;
+  border: 2px solid transparent;
+  color: white;
+  border-radius: 50%;
 }
 
-.header__accountPopover {
+.accountMenu__button:hover {
+  border-color: currentColor;
+}
+
+.accountMenu__popover {
   display: flex;
   flex-direction: column;
   width: 160px;
+  padding: 8px 10px;
   background-color: white;
   border-radius: 6px;
-  padding: 8px 10px;
   position: absolute;
   right: -10px;
   top: 100%;
   border: 0;
   box-shadow: var(--shadowBase);
-  translate: 0 40px;
-  opacity: 0;
-  z-index: -1;
+  width: 0;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
-.header__accountPopover a {
+.accountMenu__popover a {
   text-decoration: none;
   color: black;
 }
 
-.header__accountPopover:before {
+.accountMenu__popover a:hover {
+  color: var(--primaryColor);
+  text-decoration: underline;
+}
+
+.accountMenu__popover::before {
   position: absolute;
   z-index: 10;
   content: '';
+  display: block;
   right: 13px;
   top: -12px;
   border-style: solid;
@@ -92,22 +106,46 @@ function toggleMenu() {
   transition-property: transform;
 }
 
-.header__accountMenu.is-opened .header__accountPopover {
+.accountMenu.is-opened .accountMenu__popover {
   animation: moveUp 400ms forwards;
 }
 
 @keyframes moveUp {
   0% {
-    z-index: -1;
+    z-index: -10;
+    right: -10px;
+    width: 160px;
+    height: auto;
+    padding: 8px 10px;
+    opacity: 0;
+    overflow: hidden;
   }
   1% {
+    overflow: visible;
     z-index: 1;
     translate: 0 40px;
     opacity: 0;
   }
   100% {
     translate: 0 15px;
+    width: 160px;
+    height: auto;
+    padding: 8px 10px;
+    z-index: 1;
     opacity: 1;
+    overflow: visible;
+  }
+}
+
+@media (max-width: 1023px) {
+  .accountMenu__popover {
+    right: unset;
+    left: -10px;
+  }
+
+  .accountMenu__popover:before {
+    right: unset;
+    left: 13px;
   }
 }
 </style>

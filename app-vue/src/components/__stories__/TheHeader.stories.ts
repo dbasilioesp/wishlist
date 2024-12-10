@@ -2,7 +2,7 @@ import { fn } from '@storybook/test'
 import type { Meta, StoryObj } from '@storybook/vue3'
 import { vueRouter } from 'storybook-vue3-router'
 
-import TheHeader from './TheHeader.vue'
+import TheHeader from '@/components/layouts/TheHeader.vue'
 
 const meta = {
   title: 'Layout/Header',

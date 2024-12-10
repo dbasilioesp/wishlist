@@ -53,5 +53,12 @@ const props = defineProps<{
   .productsList__grid {
     margin-top: 8px;
   }
+
+  .productsList__grid:has(> :first-child:nth-last-child(1)),
+  .productsList__grid:has(> :first-child:nth-last-child(2)),
+  .productsList__grid:has(> :first-child:nth-last-child(3)) {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    justify-items: center;
+  }
 }
 </style>

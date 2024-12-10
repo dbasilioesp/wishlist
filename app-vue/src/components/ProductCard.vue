@@ -11,8 +11,8 @@ const props = defineProps<{
   fullPrice: string
   salePrice: string
   rating: number
-  unlockSize?: boolean
   wished: boolean
+  unlockSize?: boolean
   dropMode?: boolean
 }>()
 
@@ -103,6 +103,7 @@ function addToWishlist() {
   gap: 5px;
   font-size: 12px;
   color: var(--hardGrey);
+  margin-top: 5px;
 }
 
 .productCard__fullPrice {
@@ -132,6 +133,22 @@ function addToWishlist() {
   cursor: pointer;
   transition: all 300ms linear;
   padding: 6px;
+}
+
+.productCard__wishButton:hover {
+  animation: turnWish 700ms alternate infinite;
+}
+
+@keyframes turnWish {
+  0% {
+    rotate: 0;
+  }
+  35% {
+    rotate: 30deg;
+  }
+  70% {
+    rotate: -30deg;
+  }
 }
 
 .productCard__wishButton svg {
