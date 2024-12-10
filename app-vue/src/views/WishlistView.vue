@@ -13,7 +13,11 @@ const data = ref<ProductsData>({ products: [] })
 const breadcrumbs = [{ label: 'Wishlist', path: '/wishlist' }]
 
 onBeforeMount(async () => {
-  data.value = await loadListProducts()
+  try {
+    data.value = await loadListProducts()
+  } catch (error) {
+    console.error(error)
+  }
 })
 
 function handleWishlist(id: string) {

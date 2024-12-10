@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import LogoIcon from '@/components/icons/LogoIcon.vue'
 import HeartIcon from '@/components/icons/HeartIcon.vue'
-import AccountIcon from '@/components/icons/AccountIcon.vue'
 import ContainerWrapper from './ContainerWrapper.vue'
+import AccountMenu from '../AccountMenu.vue'
 </script>
 
 <template>
@@ -15,9 +15,7 @@ import ContainerWrapper from './ContainerWrapper.vue'
         <HeartIcon />
         <span>Wishlist</span>
       </RouterLink>
-      <nav class="header__accountMenu">
-        <AccountIcon />
-      </nav>
+      <AccountMenu class="header__accountMenu" />
     </ContainerWrapper>
   </header>
 </template>
